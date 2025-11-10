@@ -20,7 +20,40 @@
         p {
             color: blueviolet
         }
-    </style>
+
+        .box{
+            /* Margins are the most outer later of the box model
+            It is mainly used to add spacing between element or viewport 
+            
+            Personally, I would use relative units to hekp with mobile experience or ever chaing sizes of the devices*/
+            margin: 5vw;
+            border: 2px solid black;
+            padding:8vh;
+            text-align:center;
+        }
+
+        .grid{
+            /*display property will specify that this will be a grid system */
+            display: grid;
+            /* fr unit is used for grid to have a relative size on each column
+            the higher the number the more weighted that column will be */
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows:repeat(2,1fr); /*grid rows are optional,css grid will add new rows if there are too many elements per each column */
+
+            gap:25 px;
+
+        }
+
+        /* so if you plan on adding on a specific element it is best to add another class */
+        .box-third{
+            grid-row: span 2;
+        }
+
+        .box-fourth{
+            grid-column: span 2;
+        }
+
+        </style>
     <style>
         .add-tur {
             color: turquoise;
@@ -135,6 +168,22 @@
             <p class="add-blue add-tur">Paragraph 1</p>
             <p class="add-tur add-blue">Paragraph 2</p>
         </div>
+    </div>
+
+    <h3>Box Model</h3>
+    <div class ="box">
+        Box
+    </div>
+
+    <h3>Grid Demo</h3>
+    <div class="grid">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box box-third">3</div>
+        <div class="box box-fourth">4</div>
+        <div class="box box-fourth">5</div>
+    </div>
+
 </body>
 
 </html>
