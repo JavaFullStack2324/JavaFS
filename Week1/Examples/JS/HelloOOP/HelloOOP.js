@@ -1,3 +1,4 @@
+//"use strict";
 console.log("=================(A class called Baby)");
 //defining a class with a class declaration (using class keyword)
 //also adding a constructor
@@ -51,3 +52,16 @@ class RoboBaby extends Baby {
 //Create and use a RoboBaby
 let roboBaby = new RoboBaby("BabyBot", false, true);
 roboBaby.cry();
+
+console.log("=====use strict example===")
+
+function sloppyFunction(){
+    //"use strict";
+    x = 10; //oops! no var,let, or const
+    console.log(x)
+}
+
+//public is reserved key word so in strict mode will be SyntaxError
+let public =5 ;
+
+sloppyFunction();
