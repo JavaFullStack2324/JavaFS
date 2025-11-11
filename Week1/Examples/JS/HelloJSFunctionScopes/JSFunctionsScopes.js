@@ -63,3 +63,41 @@ let nameJohn = HelloName("John"); //this just causes helloName to run, with an a
 //nameJohn(); //error: nameJohn is not a function! it's not recognized by the compiler
 
 console.log("================================(Global Scope)");
+
+console.log(a) ;//prints undefined because it was hoisted
+
+//this global scoped
+var a =5;
+
+console.log(a); //NOW it prints 5
+
+//console.log(b); //erorr in the console - b is a "let" so it's not hoisted
+
+let b ="b";
+
+console.log("======================================(local scope)");
+
+
+if(true){
+    var c ="I'm a var in a block";
+    console.log(c)
+}
+
+console.log(c);
+
+if(true){
+    let d = "I'm a let in a block";
+    console.log(d); 
+}
+
+//console.log(d);//reference error! d is out of scope so it doesn't exist here.
+
+function testScope(){
+    //console.log(e); //undefined
+    var e = "I'm in a function!"
+    console.log(e)
+}
+
+testScope();
+
+//console.log(e); //e is out of scope so this causes a reference error
