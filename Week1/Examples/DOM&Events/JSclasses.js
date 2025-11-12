@@ -44,10 +44,38 @@
         document.querySelector("#result").innerHTML="";
 
        })
+       //Catch method is for when your fetch fails
+       //This will execute no matter the result of your fetch
        .finally(()=>{
 
        })
     }
+
+    /*
+    async /await is an extension of Promises
+    await - it will wait until the promises resolve or gives an result
+    async - this function will give a promise
+    async can be used without await. However, await needs an async keyword to work
+    */
+
+
+async function anotherWay(){
+    let response = await fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur");
+
+    //Behavior to handle problems
+    if (response.status == 404){
+        console.log("I found a 404!")
+    }
+
+    let jsObject = await response.json();
+
+    document.querySelector("#result").innerHTML = "";
+
+    let paragraphId = document.createElement("p");
+    paragraphId.innerHTML = `Id: ${jsObject.id}\nName: ${jsObject.name}`
+
+    document.querySelector("#result").append(paragraphId);
+}
     
     
     
