@@ -1,7 +1,8 @@
     function getPokemon(){
         //I need to grab the pokemon name the user wants to search for
-        let pokename = document.querySelector("#pokename").value;
+        let pokename = document.querySelector("#pokemon").value;
         
+        //let pokename="charizard";
         //Interacting with your backend api
         //By default, fetch will use GET as its type of request
         //You can change the request method by adding a second parameter in your fetch
@@ -31,7 +32,7 @@
 
        })
        .finally(()=>{
-        
+
        })
     }
     
