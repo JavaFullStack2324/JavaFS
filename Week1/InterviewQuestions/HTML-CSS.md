@@ -1,8 +1,3 @@
-
-## Required Questions
-
-[Back to top](#unit)
-
 * **What is HTML?**
   
 
@@ -67,7 +62,6 @@
 
 ## Stretch Questions
 
-[Back to top](#unit)
 
 * **What are some HTML5 tags? Why were HTML5 tags introduced?**
 

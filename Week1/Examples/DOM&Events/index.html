@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <p id="changeme">Please change me to whatever you want!</p>
+    <button onclick="clickEventListener()">Change to your name</button>
+
+    <button onclick="addYourNameListener()">Click me to add more Your Name</button> -->
+
+    <h3>Bubbling Event</h3>
+    <div style="border: 2px solid red;" onclick="alert('div was clicked')">
+        div element
+        <p style="border: 2px solid darkblue;" onclick="alert('paragraph was clicked')">
+            paragraph element
+            <span style = "border: 2px solid darkorange" onclick="alert('span was clicked')">span element</span>
+        </p>
+    </div>
+
+</body>
+<script>
+    //This is another way to add JS into your HTML using script tag
+    //Usually put on the very bottom inside your HTML element
+    //Anythig in the script tag will execute the moment the HTML is loaded by the browser
+    console.log("Hello World");
+
+    //Attaching onclick event to div, p and span and changing default behavior to capturing instead
+    //let div = document.querySelector
+</script>
+</html>

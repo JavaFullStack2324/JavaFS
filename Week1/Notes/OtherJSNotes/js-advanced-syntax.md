@@ -51,7 +51,7 @@ The spread operator provides the ability to expand iterable objects into multipl
 // spread operator for copying  
 let arr = ['a','b','c']; 
 let arr2 = [...arr]; 
-console.log(arr); // [ 'a', 'b', 'c' ] 
+console.log(arr2); // [ 'a', 'b', 'c' ] 
 
 const arr =[1,2,3,4,5,6];
 console.log(...arr);    //output: 1 2 3 4 5 6
