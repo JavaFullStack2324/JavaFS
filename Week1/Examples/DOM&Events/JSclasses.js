@@ -60,7 +60,9 @@
 
 
 async function anotherWay(){
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon/bulbasaur");
+    let pokename = document.querySelector("#pokemon").value;
+
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokename}`);
 
     //Behavior to handle problems
     if (response.status == 404){
@@ -74,7 +76,11 @@ async function anotherWay(){
     let paragraphId = document.createElement("p");
     paragraphId.innerHTML = `Id: ${jsObject.id}\nName: ${jsObject.name}`
 
+    let image = document.createElement("img");
+    image.src = jsObject.sprites.front_default
+
     document.querySelector("#result").append(paragraphId);
+    document.querySelector("#result").append(image);
 }
     
     
