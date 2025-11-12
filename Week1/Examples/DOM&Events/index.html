@@ -6,19 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <p id="changeme">Please change me to whatever you want!</p>
+    <p id="changeme">Please change me to whatever you want!</p>
     <button onclick="clickEventListener()">Change to your name</button>
 
-    <button onclick="addYourNameListener()">Click me to add more Your Name</button> -->
+    <button onclick="addYourNameListener()">Click me to add more Your Name</button>
 
-    <h3>Bubbling Event</h3>
+    <!-- <h3>Bubbling Event</h3>
     <div style="border: 2px solid red;" onclick="alert('div was clicked')">
         div element
         <p style="border: 2px solid darkblue;" onclick="alert('paragraph was clicked')">
             paragraph element
             <span style = "border: 2px solid darkorange" onclick="alert('span was clicked')">span element</span>
         </p>
-    </div>
+    </div> -->
 
     <h3>Capturing Event</h3>
     <div id="divCapture" style="border:2px solid red;">
@@ -38,13 +38,26 @@
 
     //Attaching onclick event to div, p and span and changing default behavior to capturing instead
     let div = document.querySelector("#divCapture")
+    div.addEventListener("click",()=>{alert("div was clicked")})
+    div.childNodes[1].addEventListener("click",()=> {alert("p was clicked")})
+    div.childNodes[1].childNodes[1].addEventListener("click",()=>{alert("span was clicked")} )
 
     //First param, what event should it listen to
     //second param, give me a function that should be executed if this event happened
     //third param, do you want a capturing behavior
 
-    div.addEventListener("click",()=>{alert("div was clicked")},true);
-    
+    function clickEventListener(){
+        console.log("Button has been clicked!");
+
+        //DOM Manipulation
+        //Idea: We want to change the paragraph content
+
+        //Selecting the element to change it
+        let paragEle= document.getElementById("changeme");
+
+        //changing content to William Terry
+        paragEle.innerHTML = "William Terry";
+    }
 
 </script>
 </html>
