@@ -155,4 +155,17 @@ bytefer.greet();
 // console.log(GetAllMovies());
 GetAllMovies().forEach(element => { console.log(element); });
 console.log(GetTitles('George Lucas'));
+let books = [
+    { title: "The Hobbit" },
+    { title: "1984" },
+    { title: "Dune" },
+    { title: "Foundation" },
+    { title: "Snow Crash" }
+];
+books.forEach(item => console.log(item.title));
+let purgedBooks = Purge(books);
+console.log("\nPurged Books:");
+purgedBooks.forEach(item => console.log(item.title));
+console.log("\nremaining books:");
+books.forEach(item => console.log(item.title));
 //# sourceMappingURL=app.js.map

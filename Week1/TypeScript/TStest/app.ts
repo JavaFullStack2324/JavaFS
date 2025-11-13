@@ -148,5 +148,7 @@ let books: FavoriteItem[]=[
 books.forEach(item=>console.log(item.title));
 
 let purgedBooks = Purge<FavoriteItem>(books);
-console.log("Purged Books");
+console.log("\nPurged Books:");
 purgedBooks.forEach(item=>console.log(item.title));
+console.log("\nremaining books:")
+books.forEach(item=>console.log(item.title));
