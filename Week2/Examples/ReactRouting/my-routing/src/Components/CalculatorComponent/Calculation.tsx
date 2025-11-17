@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./Calculation.css"
 
 export const CalculationComponent:React.FC = () => {
 
@@ -39,6 +40,11 @@ const storeValues = (input:any)=>{
         <h3>Calculation Component</h3>
         <input type="number" name="SideA" onChange={storeValues}/>
         <input type="number" name="SideB" onChange={storeValues}/>
+
+        {/* Conditional Rendering! If SideA or SideB <=0 , render an error message}*/}
+        <p style={{color:"red"}}>
+            {sideA >0 && sideB >0 ? "":"please enter positive integers for both sides"}
+        </p>
         <div>
             {/* "if result is truthy (nonzero) , tell the user their result, otherwise render nothing" */}
             {result ?<p>You calculated: {result}</p>:""}

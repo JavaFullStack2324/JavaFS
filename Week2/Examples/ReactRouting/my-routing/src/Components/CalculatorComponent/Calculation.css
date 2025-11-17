@@ -1,0 +1,15 @@
+.input-container {
+    border-radius: 10%;
+    border-style: groove;
+    border-width: 5px;
+    width: 50%;
+    margin-left:5%;
+    margin-top:5%;
+    padding:15px;
+    background-color:grey;
+    box-shadow:blue;
+}
+
+button {
+    margin-top: 15%;
+}
