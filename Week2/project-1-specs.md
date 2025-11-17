@@ -1,5 +1,5 @@
 # Technology Project Requirements 
-## Presentation date: August 23rd 2024
+## Presentation date: December 5 2025
 -	You will be working in small groups to create an application.
 -	This application should have multiple user roles, CRUD functionality.
 -   Your application will be an Eccomerce Application.
