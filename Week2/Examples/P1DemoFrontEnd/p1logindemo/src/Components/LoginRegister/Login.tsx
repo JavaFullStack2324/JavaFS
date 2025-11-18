@@ -1,8 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { store } from "../../GlobalData/store";
+import axios from "axios";
+import { Container, Button, Form } from "react-bootstrap";
 
-export const Login:React.FC = () => {
+
+export const Login: React.FC = () => {
 
     //we can use the useNavigate hook to navigate between components programatically
     //(no more manual URL changes)
@@ -11,18 +14,18 @@ export const Login:React.FC = () => {
     //Using the useRef and useEffect hooks to focus our username input box on component load
     const usernameRef = useRef<HTMLInputElement>(null);
 
-    useEffect(()=> {
+    useEffect(() => {
         //if the current value of the ref is truthy...
-        if(usernameRef.current){
+        if (usernameRef.current) {
             usernameRef.current.focus(); //focus it so the user can type right away
         }
-    },[]); //remember [] means this happens on component load
+    }, []); //remember [] means this happens on component load
 
 
     //Defining a state object to store the user's login credentials
-    const[loginCreds, setLoginCreds] = useState({
-        username:"",
-        password:""
+    const [loginCreds, setLoginCreds] = useState({
+        username: "",
+        password: ""
     }) //could have defined an interface for this, but we didn't
 
     //Function to store user inputs
@@ -37,34 +40,70 @@ export const Login:React.FC = () => {
 
         //This syntax is less necessary if we just have 2 fields, but wayyy more useful if there
         //are many more, say 50
-        setLoginCreds((loginCreds)=>({...loginCreds,[name]:value}))
+        setLoginCreds((loginCreds: any) => ({ ...loginCreds, [name]: value }))
 
-        
+
     }
     //Function to make the actual login request
     //navigate to /users if a manager logged in, and /games if a user logged in
     const login = async () => {
         //TODO: make sure the username/password are present before proceeding
 
-        try{
-            const response = await axios.post("http://localhost:8080/auth/login",loginCreds,
-                {withCredentials:true}
+        try {
+            const response = await axios.post("http://localhost:8080/auth/login", loginCreds,
+                { withCredentials: true }
             )
             //withCredentials lets use interact with sessions on the backend
             //every request that depends on the user being logged in being an admin, etc needs this
 
             //if the catch doesn't run, login was successful save the data to our global store, then switch components
             store.loggedInUser = response.data //this is our logged in user data from the backend
-        
-            
-        
+
+            //greet the user with this newly stored data
+            alert(store.loggedInUser.username + " has logged in! Welcome.")
+
+            //users will get sent to users component if they're and "admin", or the games component if they're a "user"
+            if (store.loggedInUser.role === "admin") {
+                navigate("/users")
+            } else {
+                navigate("/games")
+            }
+        } catch {
+            alert("Login unsuccessful")
         }
+
+
 
     }
 
     return (
-        <div>
+        /* Bootstrap gives us this Container element that does some default padding and centering */
+        <Container>
+            <h1 className ="mb-5">Welcome</h1>
+            <h3>Please Log In:</h3>
+            <div>
+                <Form.Control
+                type="text"
+                placeholder="username"
+                name="username"
+                ref={usernameRef} //attach our usernameRef here!
+                //This is how out useRef knows what to focus.
+                onChange={storeValues}
+                />
 
-        </div>
+            </div>
+            <div>
+                <Form.Control
+                type="password"
+                placeholder="password"
+                name="password"
+                onChange={storeValues}
+                />
+            </div>
+
+            <Button variant="outline-success m-1" onClick={login}>Login</Button>
+            <Button variant="outline-dark" onClick={()=>navigate("/register")}>Register</Button>
+        </Container>
+  
     )
 }
