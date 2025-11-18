@@ -13,18 +13,37 @@ export const Register:React.FC = () => {
         const response = await axios.post("http://localhost:8080/auth/register",
             {
                 username:"reactUser10",
-                passoword:"password"
+                password:"password"
 
-            }
+            })
             .then(()=>{
                 alert("user created")
                 //TODO: actually use the returned data
             })
-        )
+        
     }
     return (
             <Container>
-                <div></div>
+                <div>
+                    <h1>New Here? Create an account for free!</h1>
+                    <div>
+                        <Form.Control
+                        type="text"
+                        placeholder="username"
+                        name="username"
+                        />
+                    </div>
+                    <div>
+                        <Form.Control
+                        type="password"
+                        placeholder="password"
+                        name="password"
+                        />
+                    </div>
+                    <div>
+                        <Button onClick = {register}>Create Account!</Button>
+                    </div>
+                </div>
 
             </Container>
 
