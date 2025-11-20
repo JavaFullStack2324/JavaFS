@@ -19,7 +19,7 @@ public class Book {
     @Column(name = "book_genre")
     private String genre;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="author_id")
     private Author author;
 

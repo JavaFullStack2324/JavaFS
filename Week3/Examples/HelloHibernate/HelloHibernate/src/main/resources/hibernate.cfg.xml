@@ -22,7 +22,7 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">create</property>
-<!--        create will DROP all tables and re-create every time application starts whil
+<!--        create will DROP all tables and re-create every time application starts while
 update does not drop every time and modifies existing schema only if needed-->
 
         <!-- C3P0 connection pool (optional and recommended) -->
