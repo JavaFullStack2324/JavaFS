@@ -1,118 +1,152 @@
 package com.revature.models;
 
-import jakarta.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Flashcard {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+	private String question;
+	private String answer;
+	private String name;
+	private Difficulty difficulty;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "topic_id")
+	private Topic topic;
 
-    private String question;
-    private String answer;
-    private String name;
+	public Flashcard() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    @Enumerated(EnumType.STRING)
-    private Difficulty difficulty;
+	public Flashcard(int id, String question, String answer, String name, Difficulty difficulty, Topic topic) {
+		super();
+		this.id = id;
+		this.question = question;
+		this.answer = answer;
+		this.name = name;
+		this.difficulty = difficulty;
+		this.topic = topic;
+	}
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
+	@Override
+	public String toString() {
+		return "Flashcard [id=" + id + ", question=" + question + ", answer=" + answer + ", name=" + name
+				+ ", difficulty=" + difficulty + ", topic=" + topic + "]";
+	}
 
-    public Flashcard() {
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
+		result = prime * result + ((difficulty == null) ? 0 : difficulty.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((question == null) ? 0 : question.hashCode());
+		result = prime * result + ((topic == null) ? 0 : topic.hashCode());
+		return result;
+	}
 
-    public Flashcard(int id, String question, String answer, String name, Difficulty difficulty) {
-        this.id = id;
-        this.question = question;
-        this.answer = answer;
-        this.name = name;
-        this.difficulty = difficulty;
-        this.topic = topic;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Flashcard other = (Flashcard) obj;
+		if (answer == null) {
+			if (other.answer != null)
+				return false;
+		} else if (!answer.equals(other.answer))
+			return false;
+		if (difficulty != other.difficulty)
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (question == null) {
+			if (other.question != null)
+				return false;
+		} else if (!question.equals(other.question))
+			return false;
+		if (topic == null) {
+			if (other.topic != null)
+				return false;
+		} else if (!topic.equals(other.topic))
+			return false;
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "Flashcard{" +
-                "id=" + id +
-                ", question='" + question + '\'' +
-                ", answer='" + answer + '\'' +
-                ", name='" + name + '\'' +
-                ", difficulty=" + difficulty +
-                ", topic=" + topic +
-                '}';
-    }
+	public int getId() {
+		return id;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Flashcard flashcard)) return false;
+	public void setId(int id) {
+		this.id = id;
+	}
 
-        if (id != flashcard.id) return false;
-        if (!question.equals(flashcard.question)) return false;
-        if (!answer.equals(flashcard.answer)) return false;
-        if (!name.equals(flashcard.name)) return false;
-        if (difficulty != flashcard.difficulty) return false;
-        return topic.equals(flashcard.topic);
-    }
+	public String getQuestion() {
+		return question;
+	}
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + question.hashCode();
-        result = 31 * result + answer.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + difficulty.hashCode();
-        result = 31 * result + topic.hashCode();
-        return result;
-    }
+	public void setQuestion(String question) {
+		this.question = question;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public String getAnswer() {
+		return answer;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 
-    public String getQuestion() {
-        return question;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getAnswer() {
-        return answer;
-    }
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Topic getTopic() {
+		return topic;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public Topic getTopic() {
-        return topic;
-    }
-
-    public void setTopic(Topic topic) {
-        this.topic = topic;
-    }
+	public void setTopic(Topic topic) {
+		this.topic = topic;
+	}
+	
+	
+	
+	
+	
+	
 }
