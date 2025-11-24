@@ -12,6 +12,8 @@ public class Flashcard {
     private String question;
     private String answer;
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
