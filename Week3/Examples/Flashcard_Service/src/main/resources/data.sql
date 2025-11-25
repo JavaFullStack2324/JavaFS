@@ -22,3 +22,4 @@ INSERT INTO FLASHCARD (id, question, answer, name, difficulty, topic_id) VALUES
 
 
 
+
