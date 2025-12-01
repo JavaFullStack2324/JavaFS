@@ -30,9 +30,12 @@ public class ActorControllerTests {
     @Autowired
     MockMvc mvc;
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 9b13a1db31985f341e99816a9026c30c9f8026af
     @Test
     void getActorById() throws Exception {
 
