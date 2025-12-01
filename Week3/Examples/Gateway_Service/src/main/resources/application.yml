@@ -12,7 +12,7 @@ spring:
       - id: flashcard #This can be anything... but make it make sense lol
         uri: http://localhost:8090
         predicates:
-        - Path=/flashcard/** #So when I send something to flashcard, it'll go to 8091, followed by whatever endpoint
+        - Path=/flashcard/** #So when I send something to flashcard, it'll go to 8090, followed by whatever endpoint
       #==============================
       - id: quiz
         uri: http://localhost:8091
